@@ -1,0 +1,9 @@
+modules:
+  antiexploit:
+    book:
+      isEnabled: true
+      maxVL: 10
+      punishCommand: "kick %player_name% AntiExploit(Book)"
+
+permission:
+  bypass: "bypass"

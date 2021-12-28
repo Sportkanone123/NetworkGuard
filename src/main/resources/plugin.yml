@@ -1,0 +1,4 @@
+name: NetworkGuard
+version: 1.0-SNAPSHOT
+main: de.sportkanone123.networkguard.spigot.NetworkGuard
+api-version: 1.13
