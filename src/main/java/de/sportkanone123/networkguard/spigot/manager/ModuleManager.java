@@ -2,7 +2,7 @@ package de.sportkanone123.networkguard.spigot.manager;
 
 import de.sportkanone123.networkguard.spigot.data.PlayerData;
 import de.sportkanone123.networkguard.spigot.module.Module;
-import de.sportkanone123.networkguard.spigot.module.impl.antiexploit.BookModule;
+import de.sportkanone123.networkguard.spigot.module.impl.antiexploit.*;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.Constructor;
@@ -14,7 +14,11 @@ public class ModuleManager {
     private static final List<Constructor<?>> CONSTRUCTORS = new ArrayList<>();
 
     public static final Class<?>[] MODULES = new Class[] {
-            BookModule.class
+            BookModule.class,
+            CommandModule.class,
+            CustomPayloadModule.class,
+            ItemModule.class,
+            SignModule.class
     };
 
     public static List<Module> loadChecks(final PlayerData data) {

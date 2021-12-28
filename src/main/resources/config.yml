@@ -4,6 +4,22 @@ modules:
       isEnabled: true
       maxVL: 10
       punishCommand: "kick %player_name% AntiExploit(Book)"
+    command:
+      isEnabled: true
+      maxVL: 10
+      punishCommand: "kick %player_name% AntiExploit(Book)"
+    custompayload:
+      isEnabled: true
+      maxVL: 10
+      punishCommand: "kick %player_name% AntiExploit(Book)"
+    item:
+      isEnabled: true
+      maxVL: 10
+      punishCommand: "kick %player_name% AntiExploit(Book)"
+    sign:
+      isEnabled: true
+      maxVL: 10
+      punishCommand: "kick %player_name% AntiExploit(Book)"
 
 permission:
   bypass: "bypass"

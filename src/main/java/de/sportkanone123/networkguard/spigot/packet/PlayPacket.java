@@ -26,4 +26,14 @@ public class PlayPacket {
     public boolean isKeepAlive() { return packetId == PacketType.Play.Client.KEEP_ALIVE; }
 
     public boolean isPosition() { return packetId == PacketType.Play.Client.POSITION; }
+
+    public boolean isClientCommand() { return packetId == PacketType.Play.Client.CLIENT_COMMAND; }
+
+    public boolean isCreativeSlot() { return packetId == PacketType.Play.Client.SET_CREATIVE_SLOT; }
+
+    public boolean isWindowClick() { return packetId == PacketType.Play.Client.WINDOW_CLICK; }
+
+    public boolean isItemUse() { return packetId == PacketType.Play.Client.USE_ITEM; }
+
+    public boolean isUpdateSign() { return packetId == PacketType.Play.Client.UPDATE_SIGN; }
 }
