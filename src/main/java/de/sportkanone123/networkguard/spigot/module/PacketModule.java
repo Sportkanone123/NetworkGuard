@@ -15,7 +15,7 @@ import java.util.Locale;
 
 @Getter
 @Setter
-public abstract class Module {
+public abstract class PacketModule {
     public final PlayerData data;
 
     private final String name;
@@ -25,12 +25,12 @@ public abstract class Module {
     private final String punishCommand;
 
     private int vl;
-    private CheckType checkType;
+    private ModuleType checkType;
 
-    public Module(final PlayerData data) {
+    public PacketModule(final PlayerData data) {
         this.data = data;
 
-        this.checkType = CheckType.fromPackageName(this.getClass().getPackage().getName());
+        this.checkType = ModuleType.fromPackageName(this.getClass().getPackage().getName());
 
         this.name = this.getCheckInfo().name();
         this.description = this.getCheckInfo().description();
@@ -76,7 +76,7 @@ public abstract class Module {
         return null;
     }
 
-    public enum CheckType {
+    public enum ModuleType {
         ANTI_ALT("AntiAlt"),
         Anti_BOT_ATTACK("AntiBotAttack"),
         ANTI_EXPLOIT("AntiExploit"),
@@ -84,7 +84,7 @@ public abstract class Module {
 
         private final String name;
 
-        CheckType(String name) {
+        ModuleType(String name) {
             this.name = name;
         }
 
@@ -92,8 +92,8 @@ public abstract class Module {
             return this.name;
         }
 
-        public static CheckType fromPackageName(String packageName) {
-            for (CheckType checkType : CheckType.values()) {
+        public static ModuleType fromPackageName(String packageName) {
+            for (ModuleType checkType : ModuleType.values()) {
                 if (packageName.contains(checkType.getName().toLowerCase())) {
                     return checkType;
                 }
