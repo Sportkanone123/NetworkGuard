@@ -5,6 +5,7 @@ import de.sportkanone123.networkguard.spigot.listener.NetworkListener;
 import de.sportkanone123.networkguard.spigot.manager.ConfigManager;
 import de.sportkanone123.networkguard.spigot.manager.ModuleManager;
 import de.sportkanone123.networkguard.spigot.manager.PlayerDataManager;
+import de.sportkanone123.networkguard.spigot.manager.TickManager;
 import io.github.retrooper.packetevents.PacketEvents;
 import io.github.retrooper.packetevents.settings.PacketEventsSettings;
 import io.github.retrooper.packetevents.utils.server.ServerVersion;
@@ -16,6 +17,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class NetworkGuard extends JavaPlugin {
     public static Plugin plugin;
     private PacketEvents instance;
+
+    @Getter
+    public static TickManager tickManager;
+    @Getter
+    public static ModuleManager moduleManager;
 
     @Getter
     public static PlayerDataManager playerDataManager = new PlayerDataManager();
@@ -40,16 +46,20 @@ public class NetworkGuard extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new BukkitListener(), this);
 
-        Bukkit.getOnlinePlayers().forEach(player -> this.getPlayerDataManager().add(player));
+        Bukkit.getOnlinePlayers().forEach(player -> NetworkGuard.getPlayerDataManager().add(player));
 
         saveDefaultConfig();
 
-        ModuleManager.setup();
+        moduleManager = new ModuleManager();
+        moduleManager.setup();
+
+        tickManager = new TickManager();
+        tickManager.start();
     }
 
     @Override
     public void onDisable() {
-        Bukkit.getOnlinePlayers().forEach(player -> this.getPlayerDataManager().remove(player));
+        Bukkit.getOnlinePlayers().forEach(player -> NetworkGuard.getPlayerDataManager().remove(player));
 
         instance.terminate();
     }

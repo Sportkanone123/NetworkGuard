@@ -16,11 +16,11 @@ public class ReceivingPacketProcessor {
 
         if(NetworkGuard.getPlayerDataManager().has(player)){
             PlayerData data = NetworkGuard.getPlayerDataManager().getPlayerData(player);
-            data.getModules().forEach(module -> module.handle(packet));
+            data.getPacketModules().forEach(module -> module.handle(packet));
         }else if(player != null && player.isOnline()){
             NetworkGuard.getPlayerDataManager().add(player);
             PlayerData data = NetworkGuard.getPlayerDataManager().getPlayerData(player);
-            data.getModules().forEach(module -> module.handle(packet));
+            data.getPacketModules().forEach(module -> module.handle(packet));
         }
     }
 
